@@ -6,11 +6,11 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Testing & Compile
+name: Deployment
 
 on:
-  pull_request:
-    branches: [ "staging", "testing" ]
+  push:
+    branches: [ "testing" ]
     
 jobs:
   test:
@@ -48,21 +48,8 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions" 
 
-    - name: Maven clean 
-      run: mvn -B clean -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
+    - name: Maven release 
+      run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-
-    - name: Maven Test 
-      run: mvn -B test -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-    
-    - name: Maven Install
-      run: mvn -B install -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-   
