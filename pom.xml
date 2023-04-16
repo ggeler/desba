@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>ar.desba</groupId>
 	<artifactId>desba</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>desba</name>
 	<description>Testi desba</description>
 	<properties>
