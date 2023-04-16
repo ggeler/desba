@@ -10,8 +10,8 @@ name: Testing & Compile
 
 on:
   pull_request:
-    branches: 
-       - 'development/**'
+    types: [ submitted ]
+    branches: [ development ]
 
 jobs:
   test:
