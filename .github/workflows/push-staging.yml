@@ -10,8 +10,10 @@ name: Testing & Compile
 
 on:
   pull_request:
-    types: [opened]
-    branches: [development]
+    types: 
+       - opened
+    branches: 
+       - 'development/**'
 
 jobs:
   test:
