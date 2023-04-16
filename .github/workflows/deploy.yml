@@ -9,7 +9,7 @@
 name: Deployment
 
 on:
-  pull_request:
+  push:
     branches: [ "testing" ]
     
 jobs:
