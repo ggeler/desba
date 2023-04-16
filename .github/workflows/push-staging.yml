@@ -9,9 +9,8 @@
 name: Testing & Compile
 
 on:
-  pull_request_review:
-    types: [submmited]
-    branches: [ "development" ]
+  pull_request:
+    branches: [ "development/**" ]
     
 jobs:
   test:
