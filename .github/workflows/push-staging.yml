@@ -9,11 +9,12 @@
 name: Testing & Compile
 
 on:
-  push:
-    branches: [ "staging" ]
+  pull_request:
+    types: [opened]
+    branches: [development]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
