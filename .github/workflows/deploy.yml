@@ -54,7 +54,12 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
          
-    - name: Update Development branch
-      run: |
-          git checkout development
-          git merge main
+    - name: Merge into Development branch
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        from_branch: main
+        target_branch: development
+        message: Github actions - Merge main into Development for next release
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
