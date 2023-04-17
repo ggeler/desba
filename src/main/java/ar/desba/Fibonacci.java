@@ -1,0 +1,27 @@
+package ar.desba;
+
+public class Fibonacci {
+/* 
+	public long fibo(int n) {
+		if (n==0)
+			return 0;
+		else
+			return -1L;
+	}
+
+	public long fibo(int n) {
+		if (n==0)
+			return 0;
+		else if (n==1)
+			return 1;
+		else 
+			return -1L;
+	}
+*/
+	public long fibo(int n) {
+		if (n<=1)
+			return n;
+		else
+			return fibo(n-1) + fibo(n-2);
+	}
+}
