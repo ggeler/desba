@@ -9,7 +9,7 @@
 name: Release Deployment
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
     
 jobs:
@@ -48,7 +48,7 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions" 
 
-    - name: Maven release 
+    - name: Maven release deployment
       run: mvn -B release:prepare release:branch -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
