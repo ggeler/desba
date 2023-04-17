@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Deployment
+name: Release Deployment
 
 on:
   pull_request:
