@@ -13,7 +13,7 @@ public class FactorialTests {
 		var fact = new Factorial();
 		System.out.println("Factorial 0: "+fact.factorial(0));
 		assertThat(fact.factorial(0)).isEqualTo(1L);
-		
+		//test
 	}
 	
 	@Test
@@ -28,7 +28,6 @@ public class FactorialTests {
 		var fact = new Factorial();
 		System.out.println("Factorial 5: "+fact.factorial(5));
 		assertThat(fact.factorial(5)).isEqualTo(120L);
-		
 	}
 	
 	@Test
