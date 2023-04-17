@@ -13,7 +13,7 @@ public class FactorialTests {
 		var fact = new Factorial();
 		System.out.println("Factorial 0: "+fact.factorial(0));
 		assertThat(fact.factorial(0)).isEqualTo(1L);
-		
+		//GG
 	}
 	
 	@Test
