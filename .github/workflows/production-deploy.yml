@@ -49,7 +49,7 @@ jobs:
           git config user.name "GitHub Actions" 
 
     - name: Maven release deployment
-      run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
+      run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
