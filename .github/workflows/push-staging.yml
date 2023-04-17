@@ -10,7 +10,7 @@ name: Unit testing verification
 
 on:
   pull_request:
-    branches: [ "staging", "testing" ]
+    branches: [ "staging" ]
     
 jobs:
   test:
