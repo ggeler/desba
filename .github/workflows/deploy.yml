@@ -58,7 +58,7 @@ jobs:
       uses: devmasx/merge-branch@master
       with:
         type: now
-        from_barnch: main
+        from_branch: main
         target_branch: development
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
