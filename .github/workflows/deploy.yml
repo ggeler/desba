@@ -60,6 +60,6 @@ jobs:
         type: now
         from_branch: main
         target_branch: development
-        message: [Github actions] Merge main into Development for next release
+        message: Github actions - Merge main into Development for next release
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
