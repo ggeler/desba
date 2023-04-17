@@ -6,11 +6,11 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Release Deployment
+name: Pre-Release Deployment
 
 on:
   push:
-    branches: [ "main", "pre-release" ]
+    branches: [ "pre-release" ]
     
 jobs:
   test:
@@ -58,8 +58,8 @@ jobs:
       uses: devmasx/merge-branch@master
       with:
         type: now
-        from_branch: main
+        from_branch: pre-release
         target_branch: development
-        message: Github actions - Merge main into Development for next release
+        message: Github actions - Merge pre-release into Development for next release
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
