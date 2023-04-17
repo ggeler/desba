@@ -54,7 +54,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
 
-    - name: Maven Test 
+    - name: Maven Testing Deployment 
       run: mvn -B deploy -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
