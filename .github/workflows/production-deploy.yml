@@ -1,0 +1,65 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Production Release Deployment
+
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+          ref: ${{ github.event.inputs.branch }}
+    
+    - name: Set up JDK 19
+      uses: actions/setup-java@v3
+      with:
+        java-version: '19'
+        distribution: 'temurin'
+        cache: 'maven'
+        server-id: github
+        settings-path: ${{ github.workspace }}
+    
+    - name: View settings.xml
+      run: |
+        cat $GITHUB_WORKSPACE/settings.xml
+    
+    - name: Cache local Maven repository
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    
+    - name: Configure Git user
+      run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions" 
+
+    - name: Maven release deployment
+      run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+         
+    - name: Merge into Development branch
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        from_branch: main
+        target_branch: development
+        message: Github actions - Merge main into Development for next release
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
