@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>ar.desba</groupId>
 	<artifactId>desba</artifactId>
-	<version>0.0.18-SNAPSHOT</version>
+	<version>0.0.18</version>
 	<name>desba</name>
 	<description>Testi desba</description>
 	<properties>
@@ -56,7 +56,7 @@
 		<url>https://github.com/ggeler/desba.git</url>
 		<connection>scm:git:${project.scm.url}</connection>
 		<developerConnection>scm:git:${project.scm.url}</developerConnection>
-	    <tag>desba-0.0.13</tag>
+	    <tag>desba-0.0.18</tag>
     </scm>
 	<issueManagement>
 		<url>https://github.com/ggeler/desba/issues</url>
