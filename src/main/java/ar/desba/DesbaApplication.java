@@ -9,13 +9,21 @@ public class DesbaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DesbaApplication.class, args);
 
-		var fact = new Factorial();
-		System.out.println("Factorial recursivo "+fact.factorial(0));
-		System.out.println("Factorial recursivo "+fact.factorial(1));
-		
-		var f2 = new Factorial();
-		System.out.println("Factorial recursivo "+f2.factorial(10));
+		var fib = new Fibonacci();
+		var fac = new Factorial();
 
+		int number = 11;
+        System.out.println ("Fibonacci Series: First 10 numbers:");
+        for (int i = 1; i <= number; i++) 
+        {
+            System.out.print(fib.fibo(i) + " ");
+        }
+        System.out.println();
+        System.out.println ("Facgorial: First 10 numbers:");
+        for (int i = 1; i <= number; i++) 
+        {
+            System.out.print(fac.factorial(i) + " ");
+        }
 	}
 
 }

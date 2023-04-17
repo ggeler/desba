@@ -14,7 +14,7 @@
 	<name>desba</name>
 	<description>Testi desba</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,6 +34,22 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+        			<image>
+            			<buildpacks>
+                			<buildpack>gcr.io/paketo-buildpacks/graalvm</buildpack>
+                			<buildpack>gcr.io/paketo-buildpacks/java-native-image</buildpack>
+            			</buildpacks>
+            			<env>
+                			<BP_JVM_VERSION>19.0.2</BP_JVM_VERSION>
+                			<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+            			</env> 
+        			</image>
+    			</configuration> 
+			</plugin>
+			<plugin>
+				<groupId>org.graalvm.buildtools</groupId>
+				<artifactId>native-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
