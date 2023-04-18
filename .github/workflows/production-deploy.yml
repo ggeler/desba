@@ -11,24 +11,9 @@ name: Production Release Deployment
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: "Default version to use when preparing a release."
-        required: true
-        default: "X.Y.Z"
-      preReleaseVersion:
-        description: "Default version to use when preparing a pre-release."
-        required: true
-        default: "X.Y.Z-RC"
-      developmentVersion:
-        description: "Default version to use for new local working copy."
-        required: true
-        default: "X.Y.Z-SNAPSHOT"
-    
+
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -59,6 +44,7 @@ jobs:
     
     - name: Configure Git user
       run: |
+          mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}-SNAPSHOT
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions" 
 
