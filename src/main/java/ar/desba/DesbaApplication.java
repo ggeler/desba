@@ -11,7 +11,7 @@ public class DesbaApplication {
 
 		var fib = new Fibonacci();
 		var fac = new Factorial();
-		//RC-4 prueba..
+		//RC-7 prueba..
 		int number = 11;
         System.out.println ("Fibonacci Series: First 10 numbers:");
         for (int i = 1; i <= number; i++) 
