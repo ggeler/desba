@@ -50,7 +50,6 @@ jobs:
           git add pom.xml --ignore-errors
           git add pom.xml.versionsBackup --ignore-errors
           git commit -m "Actualizo version pom.xml"
-          git push
 
     - name: Maven release deployment
       run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/settings.xml -Dusername=$GITHUB_ACTOR -Dpassword=$GITHUB_TOKEN 
